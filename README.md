@@ -1,3 +1,3 @@
 # calculator_flutter
 
-This is a mobile app Calculator that is made with Flutter & Dart
+This is my first project made from sratch with Flutter & Dart - a simple mobile Calculator
