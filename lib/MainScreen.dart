@@ -15,6 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   double doubleSum;
   int sum;
   String myChar = '';
+  int clicks = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -182,14 +183,23 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // We first save the value
-                          saveNum2 = 8;
-                          // First convert to number, to represent into Text Widget
-                          number += saveNum2.toString();
-                          // save the value in a string, then to be able to parse it
-                          secondNumValue += saveNum2.toString();
-                          // Then, on a click, we parse the value to an integer,
-                          saveNum2 = int.parse(secondNumValue);
+                          // THIS IS WHERE YOU LEFT OFF
+                          clicks++;
+                          for (int i = 0; i <= clicks; i++) {
+                            if (i == 1) {
+                              saveNum1 = 8;
+                              number += saveNum1.toString();
+                              saveNum1 = int.parse(number);
+                            }
+                          }
+                          // // We first save the value
+                          // saveNum2 = 8;
+                          // // First convert to number, to represent into Text Widget
+                          // number += saveNum2.toString();
+                          // // save the value in a string, then to be able to parse it
+                          // secondNumValue += saveNum2.toString();
+                          // // Then, on a click, we parse the value to an integer,
+                          // saveNum2 = int.parse(secondNumValue);
                         });
                       },
                       child: Text(
@@ -332,6 +342,7 @@ class _MainScreenState extends State<MainScreen> {
                           secondNumValue += saveNum2.toString();
                           // Then, on a click, we parse the value to an integer,
                           saveNum2 = int.parse(secondNumValue);
+                          print(saveNum2);
                         });
                       },
                       child: Text(
