@@ -15,6 +15,26 @@ class _MainScreenState extends State<MainScreen> {
   String myChar = '';
   int clicks = 0;
 
+  void determineNumberPlace(int num) {
+    for (int i = 0; i <= clicks; i++) {
+      if (i == 1) {
+        if (myChar == '+') {
+          saveNum2 = num;
+          // First convert to number, to represent into Text Widget
+          number += saveNum2.toString();
+          // save the value in a string, then to be able to parse it
+          secondNumValue += saveNum2.toString();
+          // Then, on a click, we parse the value to an integer,
+          saveNum2 = int.parse(secondNumValue);
+        } else {
+          saveNum1 = num;
+          number += saveNum1.toString();
+          saveNum1 = int.parse(number);
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -161,14 +181,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // We first save the value
-                          saveNum2 = 7;
-                          // First convert to number, to represent into Text Widget
-                          number += saveNum2.toString();
-                          // save the value in a string, then to be able to parse it
-                          secondNumValue += saveNum2.toString();
-                          // Then, on a click, we parse the value to an integer,
-                          saveNum2 = int.parse(secondNumValue);
+                          clicks++;
+                          determineNumberPlace(7);
                         });
                       },
                       child: Text(
@@ -181,25 +195,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // THIS IS WHERE YOU LEFT OFF
                           clicks++;
-                          for (int i = 0; i <= clicks; i++) {
-                            if (i == 1) {
-                              if (myChar == '+') {
-                                saveNum2 = 8;
-                                // First convert to number, to represent into Text Widget
-                                number += saveNum2.toString();
-                                // save the value in a string, then to be able to parse it
-                                secondNumValue += saveNum2.toString();
-                                // Then, on a click, we parse the value to an integer,
-                                saveNum2 = int.parse(secondNumValue);
-                              } else {
-                                saveNum1 = 8;
-                                number += saveNum1.toString();
-                                saveNum1 = int.parse(number);
-                              }
-                            }
-                          }
+                          determineNumberPlace(8);
                         });
                       },
                       child: Text(
@@ -212,14 +209,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // We first save the value
-                          saveNum2 = 9;
-                          // First convert to number, to represent into Text Widget
-                          number += saveNum2.toString();
-                          // save the value in a string, then to be able to parse it
-                          secondNumValue += saveNum2.toString();
-                          // Then, on a click, we parse the value to an integer,
-                          saveNum2 = int.parse(secondNumValue);
+                          clicks++;
+                          determineNumberPlace(9);
                         });
                       },
                       child: Text(
@@ -238,14 +229,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // We first save the value
-                          saveNum2 = 4;
-                          // First convert to number, to represent into Text Widget
-                          number += saveNum2.toString();
-                          // save the value in a string, then to be able to parse it
-                          secondNumValue += saveNum2.toString();
-                          // Then, on a click, we parse the value to an integer,
-                          saveNum2 = int.parse(secondNumValue);
+                          clicks++;
+                          determineNumberPlace(4);
                         });
                       },
                       child: Text(
@@ -258,14 +243,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // We first save the value
-                          saveNum2 = 5;
-                          // First convert to number, to represent into Text Widget
-                          number += saveNum2.toString();
-                          // save the value in a string, then to be able to parse it
-                          secondNumValue += saveNum2.toString();
-                          // Then, on a click, we parse the value to an integer,
-                          saveNum2 = int.parse(secondNumValue);
+                          clicks++;
+                          determineNumberPlace(5);
                         });
                       },
                       child: Text(
@@ -278,14 +257,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // We first save the value
-                          saveNum2 = 6;
-                          // First convert to number, to represent into Text Widget
-                          number += saveNum2.toString();
-                          // save the value in a string, then to be able to parse it
-                          secondNumValue += saveNum2.toString();
-                          // Then, on a click, we parse the value to an integer,
-                          saveNum2 = int.parse(secondNumValue);
+                          clicks++;
+                          determineNumberPlace(6);
                         });
                       },
                       child: Text(
@@ -304,24 +277,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          if (myChar == '+') {
-                            // We first save the value
-                            saveNum2 = 1;
-                            // Convert it to a String to represent into Text Widget
-                            number += saveNum2.toString();
-                            secondNumValue += saveNum2.toString();
-                            // Then, on a click, we parse the value to an integer,
-                            // which if more than 1 click for example is 11
-                            saveNum2 = int.parse(secondNumValue);
-                          } else {
-                            // We first save the value
-                            saveNum1 = 1;
-                            // Convert it to a String to represent into Text Widget
-                            number += saveNum1.toString();
-                            // Then, on a click, we parse the value to an integer,
-                            // which if more than 1 click for example is 11
-                            saveNum1 = int.parse(number);
-                          }
+                          clicks++;
+                          determineNumberPlace(1);
                         });
                       },
                       child: Text(
@@ -334,15 +291,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // We first save the value
-                          saveNum2 = 2;
-                          // First convert to number, to represent into Text Widget
-                          number += saveNum2.toString();
-                          // save the value in a string, then to be able to parse it
-                          secondNumValue += saveNum2.toString();
-                          // Then, on a click, we parse the value to an integer,
-                          saveNum2 = int.parse(secondNumValue);
-                          print(saveNum2);
+                          clicks++;
+                          determineNumberPlace(2);
                         });
                       },
                       child: Text(
@@ -355,14 +305,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          // We first save the value
-                          saveNum2 = 3;
-                          // First convert to number, to represent into Text Widget
-                          number += saveNum2.toString();
-                          // save the value in a string, then to be able to parse it
-                          secondNumValue += saveNum2.toString();
-                          // Then, on a click, we parse the value to an integer,
-                          saveNum2 = int.parse(secondNumValue);
+                          clicks++;
+                          determineNumberPlace(3);
                         });
                       },
                       child: Text(
