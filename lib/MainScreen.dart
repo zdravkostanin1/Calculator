@@ -6,8 +6,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<int> nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-
   String number = '';
   String secondNumValue = '';
   int saveNum1 = 0;
@@ -187,19 +185,21 @@ class _MainScreenState extends State<MainScreen> {
                           clicks++;
                           for (int i = 0; i <= clicks; i++) {
                             if (i == 1) {
-                              saveNum1 = 8;
-                              number += saveNum1.toString();
-                              saveNum1 = int.parse(number);
+                              if (myChar == '+') {
+                                saveNum2 = 8;
+                                // First convert to number, to represent into Text Widget
+                                number += saveNum2.toString();
+                                // save the value in a string, then to be able to parse it
+                                secondNumValue += saveNum2.toString();
+                                // Then, on a click, we parse the value to an integer,
+                                saveNum2 = int.parse(secondNumValue);
+                              } else {
+                                saveNum1 = 8;
+                                number += saveNum1.toString();
+                                saveNum1 = int.parse(number);
+                              }
                             }
                           }
-                          // // We first save the value
-                          // saveNum2 = 8;
-                          // // First convert to number, to represent into Text Widget
-                          // number += saveNum2.toString();
-                          // // save the value in a string, then to be able to parse it
-                          // secondNumValue += saveNum2.toString();
-                          // // Then, on a click, we parse the value to an integer,
-                          // saveNum2 = int.parse(secondNumValue);
                         });
                       },
                       child: Text(
