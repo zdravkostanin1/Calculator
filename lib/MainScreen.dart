@@ -326,7 +326,12 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   Expanded(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          clicks++;
+                          determineNumberPlace(0);
+                        });
+                      },
                       child: Text(
                         '0',
                         style: TextStyle(fontSize: 33.0, color: Colors.black),
