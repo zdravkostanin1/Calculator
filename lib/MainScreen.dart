@@ -14,6 +14,7 @@ class _MainScreenState extends State<MainScreen> {
   int sum;
   String myChar = '';
   int clicks = 0;
+  int test = 15 % 4;
 
   void determineNumberPlace(int num) {
     for (int i = 0; i <= clicks; i++) {
@@ -353,6 +354,12 @@ class _MainScreenState extends State<MainScreen> {
                         } else if (myChar == '-') {
                           setState(() {
                             sum = saveNum1 - saveNum2;
+                            number = number + ' = ';
+                            number = number + sum.toString();
+                          });
+                        } else if (myChar == '%') {
+                          setState(() {
+                            sum = saveNum1 % saveNum2;
                             number = number + ' = ';
                             number = number + sum.toString();
                           });
