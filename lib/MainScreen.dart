@@ -39,6 +39,20 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
+  void clearTheValuesOfVariables() {
+    number = '';
+    saveNum1 = 0;
+    saveNum2 = 0;
+    sum = 0;
+    myChar = '';
+    secondNumValue = '';
+  }
+
+  void determineOperatorSign(String operator) {
+    myChar = operator;
+    number = number + ' $operator ';
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -80,10 +94,8 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          myChar = '+';
-                          number = number + ' + ';
+                          determineOperatorSign('+');
                         });
-                        print(myChar);
                       },
                       child: Text(
                         '+',
@@ -96,8 +108,7 @@ class _MainScreenState extends State<MainScreen> {
                       onPressed: () {
                         setState(() {
                           setState(() {
-                            myChar = '-';
-                            number = number + ' - ';
+                            determineOperatorSign('-');
                           });
                         });
                       },
@@ -111,12 +122,7 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          number = '';
-                          saveNum1 = 0;
-                          saveNum2 = 0;
-                          sum = 0;
-                          myChar = '';
-                          secondNumValue = '';
+                          clearTheValuesOfVariables();
                         });
                       },
                       child: Text(
@@ -135,8 +141,7 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          myChar = '*';
-                          number = number + ' * ';
+                          determineOperatorSign('*');
                         });
                       },
                       child: Text(
@@ -149,8 +154,7 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          myChar = '/';
-                          number = number + ' / ';
+                          determineOperatorSign('/');
                         });
                       },
                       child: Text(
@@ -164,8 +168,7 @@ class _MainScreenState extends State<MainScreen> {
                       onPressed: () {
                         setState(() {
                           setState(() {
-                            myChar = '%';
-                            number = number + ' % ';
+                            determineOperatorSign('%');
                           });
                         });
                       },
