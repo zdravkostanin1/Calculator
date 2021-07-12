@@ -77,10 +77,12 @@ class _MainScreenState extends State<MainScreen> {
                 child: Center(
                   child: Row(
                     children: [
-                      Text(
-                        number,
-                        style: TextStyle(
-                          fontSize: 44.0,
+                      Expanded(
+                        child: Text(
+                          number,
+                          style: TextStyle(
+                            fontSize: 44.0,
+                          ),
                         ),
                       ),
                     ],
