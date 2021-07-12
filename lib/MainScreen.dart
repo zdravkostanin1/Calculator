@@ -14,7 +14,6 @@ class _MainScreenState extends State<MainScreen> {
   int sum;
   String myChar = '';
   int clicks = 0;
-  int test = 15 % 4;
 
   void determineNumberPlace(int num) {
     for (int i = 0; i <= clicks; i++) {
