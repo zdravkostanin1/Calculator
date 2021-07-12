@@ -6,6 +6,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final String appBarTitle = 'Calculator';
+
   String number = '';
   String secondNumValue = '';
   int saveNum1 = 0;
@@ -60,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
         appBar: AppBar(
           backgroundColor: Colors.blueAccent,
           title: Text(
-            'My First Calculator',
+            appBarTitle,
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
