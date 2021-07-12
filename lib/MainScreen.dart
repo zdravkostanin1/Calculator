@@ -18,7 +18,11 @@ class _MainScreenState extends State<MainScreen> {
   void determineNumberPlace(int num) {
     for (int i = 0; i <= clicks; i++) {
       if (i == 1) {
-        if (myChar == '+') {
+        if (myChar == '+' ||
+            myChar == '*' ||
+            myChar == '/' ||
+            myChar == '-' ||
+            myChar == '%') {
           saveNum2 = num;
           // First convert to number, to represent into Text Widget
           number += saveNum2.toString();
@@ -179,16 +183,16 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   Expanded(
                     child: TextButton(
+                      child: Text(
+                        '7',
+                        style: TextStyle(fontSize: 33.0, color: Colors.black),
+                      ),
                       onPressed: () {
                         setState(() {
                           clicks++;
                           determineNumberPlace(7);
                         });
                       },
-                      child: Text(
-                        '7',
-                        style: TextStyle(fontSize: 33.0, color: Colors.black),
-                      ),
                     ),
                   ),
                   Expanded(
