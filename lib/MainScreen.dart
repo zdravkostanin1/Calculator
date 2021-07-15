@@ -12,10 +12,60 @@ class _MainScreenState extends State<MainScreen> {
   String secondNumValue = '';
   int saveNum1 = 0;
   int saveNum2 = 0;
-  double doubleSum;
-  int sum;
+  double doubleSum = 0;
+  int sum = 0;
   String myChar = '';
   int clicks = 0;
+  int operatorClicks = 0;
+
+  void determineOperatorClicks() {
+    if (myChar == '+') {
+      operatorClicks++;
+      if (operatorClicks >= 2) {
+        secondNumValue = '';
+        number = '';
+        sum = saveNum1 + saveNum2;
+        number = number + sum.toString();
+        number = number + ' $myChar ';
+      }
+    } else if (myChar == '-') {
+      operatorClicks++;
+      if (operatorClicks >= 2) {
+        secondNumValue = '';
+        number = '';
+        sum = saveNum1 - saveNum2;
+        number = number + sum.toString();
+        number = number + ' $myChar ';
+      }
+    } else if (myChar == '/') {
+      operatorClicks += 1;
+      if (operatorClicks >= 2) {
+        secondNumValue = '';
+        number = '';
+        doubleSum = saveNum1 / saveNum2;
+        number = number + doubleSum.toString();
+        number = number + ' $myChar ';
+      }
+    } else if (myChar == '%') {
+      operatorClicks++;
+      if (operatorClicks >= 2) {
+        secondNumValue = '';
+        number = '';
+        sum = saveNum1 % saveNum2;
+        number = number + sum.toString();
+        number = number + ' $myChar ';
+      }
+    } else if (myChar == '*') {
+      operatorClicks++;
+      if (operatorClicks >= 2) {
+        secondNumValue = '';
+        number = '';
+        sum = saveNum1 * saveNum2;
+        number = number + sum.toString();
+        number = number + ' $myChar ';
+      }
+    }
+  }
 
   void determineNumberPlace(int num) {
     for (int i = 0; i <= clicks; i++) {
@@ -48,11 +98,15 @@ class _MainScreenState extends State<MainScreen> {
     sum = 0;
     myChar = '';
     secondNumValue = '';
+    operatorClicks = 0;
+    clicks = 0;
+    doubleSum = 0;
   }
 
   void determineOperatorSign(String operator) {
     myChar = operator;
-    number = number + ' $operator ';
+    number = number + ' $myChar ';
+    print(operatorClicks);
   }
 
   @override
@@ -99,6 +153,7 @@ class _MainScreenState extends State<MainScreen> {
                       onPressed: () {
                         setState(() {
                           determineOperatorSign('+');
+                          determineOperatorClicks();
                         });
                       },
                       child: Text(
@@ -113,6 +168,7 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           setState(() {
                             determineOperatorSign('-');
+                            determineOperatorClicks();
                           });
                         });
                       },
@@ -146,6 +202,7 @@ class _MainScreenState extends State<MainScreen> {
                       onPressed: () {
                         setState(() {
                           determineOperatorSign('*');
+                          determineOperatorClicks();
                         });
                       },
                       child: Text(
@@ -159,6 +216,7 @@ class _MainScreenState extends State<MainScreen> {
                       onPressed: () {
                         setState(() {
                           determineOperatorSign('/');
+                          determineOperatorClicks();
                         });
                       },
                       child: Text(
@@ -173,6 +231,7 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           setState(() {
                             determineOperatorSign('%');
+                            determineOperatorClicks();
                           });
                         });
                       },
@@ -345,34 +404,64 @@ class _MainScreenState extends State<MainScreen> {
                       onPressed: () {
                         if (myChar == '+') {
                           setState(() {
-                            sum = saveNum1 + saveNum2;
-                            number = number + ' = ';
-                            number = number + sum.toString();
+                            if (sum != 0) {
+                              sum = sum + saveNum2;
+                              number = number + ' = ';
+                              number = number + sum.toString();
+                            } else if (sum == 0) {
+                              sum = saveNum1 + saveNum2;
+                              number = number + ' = ';
+                              number = number + sum.toString();
+                            }
                           });
                           // print(myChar);
                         } else if (myChar == '*') {
                           setState(() {
-                            sum = saveNum1 * saveNum2;
-                            number = number + ' = ';
-                            number = number + sum.toString();
+                            if (sum != 0) {
+                              sum = sum * saveNum2;
+                              number = number + ' = ';
+                              number = number + sum.toString();
+                            } else if (sum == 0) {
+                              sum = saveNum1 * saveNum2;
+                              number = number + ' = ';
+                              number = number + sum.toString();
+                            }
                           });
                         } else if (myChar == '/') {
                           setState(() {
-                            doubleSum = saveNum1 / saveNum2;
-                            number = number + ' = ';
-                            number = number + doubleSum.toString();
+                            if (doubleSum != 0) {
+                              doubleSum = doubleSum / saveNum2;
+                              number = number + ' = ';
+                              number = number + doubleSum.toString();
+                            } else if (doubleSum == 0) {
+                              doubleSum = saveNum1 / saveNum2;
+                              number = number + ' = ';
+                              number = number + doubleSum.toString();
+                            }
                           });
                         } else if (myChar == '-') {
                           setState(() {
-                            sum = saveNum1 - saveNum2;
-                            number = number + ' = ';
-                            number = number + sum.toString();
+                            if (sum != 0) {
+                              sum = sum - saveNum2;
+                              number = number + ' = ';
+                              number = number + sum.toString();
+                            } else if (sum == 0) {
+                              sum = saveNum1 - saveNum2;
+                              number = number + ' = ';
+                              number = number + sum.toString();
+                            }
                           });
                         } else if (myChar == '%') {
                           setState(() {
-                            sum = saveNum1 % saveNum2;
-                            number = number + ' = ';
-                            number = number + sum.toString();
+                            if (sum != 0) {
+                              sum = sum % saveNum2;
+                              number = number + ' = ';
+                              number = number + sum.toString();
+                            } else if (sum == 0) {
+                              sum = saveNum1 % saveNum2;
+                              number = number + ' = ';
+                              number = number + sum.toString();
+                            }
                           });
                         }
                       },
