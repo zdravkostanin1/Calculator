@@ -21,8 +21,6 @@ class _MainScreenState extends State<MainScreen> {
   void determineOperatorClicks() {
     if (myChar == '+') {
       operatorClicks++;
-      // Where you left off...
-      // figure out why you cannot use more than 2 operators
       if (operatorClicks == 2 || operatorClicks > 2) {
         if (sum != 0) {
           number = '';
@@ -36,7 +34,6 @@ class _MainScreenState extends State<MainScreen> {
           sum = saveNum1 + saveNum2;
           number = number + sum.toString();
           number = number + ' $myChar ';
-          // print(operatorClicks);
         }
       }
     } else if (myChar == '-') {
