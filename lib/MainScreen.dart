@@ -21,48 +21,91 @@ class _MainScreenState extends State<MainScreen> {
   void determineOperatorClicks() {
     if (myChar == '+') {
       operatorClicks++;
-      if (operatorClicks >= 2) {
-        secondNumValue = '';
-        number = '';
-        sum = saveNum1 + saveNum2;
-        number = number + sum.toString();
-        number = number + ' $myChar ';
+      // Where you left off...
+      // figure out why you cannot use more than 2 operators
+      if (operatorClicks == 2 || operatorClicks > 2) {
+        if (sum != 0) {
+          number = '';
+          secondNumValue = '';
+          sum = sum + saveNum2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+        } else {
+          number = '';
+          secondNumValue = '';
+          sum = saveNum1 + saveNum2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          // print(operatorClicks);
+        }
       }
     } else if (myChar == '-') {
       operatorClicks++;
-      if (operatorClicks >= 2) {
-        secondNumValue = '';
-        number = '';
-        sum = saveNum1 - saveNum2;
-        number = number + sum.toString();
-        number = number + ' $myChar ';
+      if (operatorClicks == 2 || operatorClicks > 2) {
+        if (sum != 0) {
+          number = '';
+          secondNumValue = '';
+          sum = sum - saveNum2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+        } else {
+          secondNumValue = '';
+          number = '';
+          sum = saveNum1 - saveNum2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+        }
       }
     } else if (myChar == '/') {
       operatorClicks += 1;
-      if (operatorClicks >= 2) {
-        secondNumValue = '';
-        number = '';
-        doubleSum = saveNum1 / saveNum2;
-        number = number + doubleSum.toString();
-        number = number + ' $myChar ';
+      if (operatorClicks == 2 || operatorClicks > 2) {
+        if (sum != 0) {
+          secondNumValue = '';
+          number = '';
+          doubleSum = doubleSum / saveNum2;
+          number = number + doubleSum.toString();
+          number = number + ' $myChar ';
+        } else {
+          secondNumValue = '';
+          number = '';
+          doubleSum = saveNum1 / saveNum2;
+          number = number + doubleSum.toString();
+          number = number + ' $myChar ';
+        }
       }
     } else if (myChar == '%') {
       operatorClicks++;
-      if (operatorClicks >= 2) {
-        secondNumValue = '';
-        number = '';
-        sum = saveNum1 % saveNum2;
-        number = number + sum.toString();
-        number = number + ' $myChar ';
+      if (operatorClicks == 2 || operatorClicks > 2) {
+        if (sum != 0) {
+          secondNumValue = '';
+          number = '';
+          sum = sum % saveNum2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+        } else {
+          secondNumValue = '';
+          number = '';
+          sum = saveNum1 % saveNum2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+        }
       }
     } else if (myChar == '*') {
       operatorClicks++;
-      if (operatorClicks >= 2) {
-        secondNumValue = '';
-        number = '';
-        sum = saveNum1 * saveNum2;
-        number = number + sum.toString();
-        number = number + ' $myChar ';
+      if (operatorClicks == 2 || operatorClicks > 2) {
+        if (sum != 0) {
+          secondNumValue = '';
+          number = '';
+          sum = sum * saveNum2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+        } else {
+          secondNumValue = '';
+          number = '';
+          sum = saveNum1 * saveNum2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+        }
       }
     }
   }
@@ -106,7 +149,6 @@ class _MainScreenState extends State<MainScreen> {
   void determineOperatorSign(String operator) {
     myChar = operator;
     number = number + ' $myChar ';
-    print(operatorClicks);
   }
 
   @override
