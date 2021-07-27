@@ -20,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   String theLastOperator = '';
   String plusOperator = '';
   String divideOperator = '';
+  String minusOperator = '';
 
   void determineOperatorClicks() {
     if (myChar == '+') {
@@ -49,8 +50,16 @@ class _MainScreenState extends State<MainScreen> {
       }
     } else if (myChar == '-') {
       operatorClicks++;
+      minusOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (sum != 0) {
+        if (theLastOperator == '*') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 * num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          theLastOperator = '';
+        } else if (sum != 0) {
           number = '';
           secondNumValue = '';
           sum = sum - num2;
@@ -67,16 +76,6 @@ class _MainScreenState extends State<MainScreen> {
     } else if (myChar == '/') {
       operatorClicks++;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (theLastOperator == '*') {
-          secondNumValue = '';
-          number = '';
-          sum = num1 * num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
-          theLastOperator = '';
-          print(sum);
-          print(doubleSum);
-        }
         if (doubleSum != 0) {
           secondNumValue = '';
           number = '';
@@ -119,6 +118,13 @@ class _MainScreenState extends State<MainScreen> {
           number = number + sum.toString();
           number = number + ' $myChar ';
           plusOperator = '';
+        } else if (minusOperator == '-') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 - num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          minusOperator = '';
         } else if (sum != 0) {
           secondNumValue = '';
           number = '';
