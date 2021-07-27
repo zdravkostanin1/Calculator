@@ -21,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   String plusOperator = '';
   String divideOperator = '';
   String minusOperator = '';
+  String moduloOperator = '';
 
   void determineOperatorClicks() {
     if (myChar == '+') {
@@ -92,8 +93,16 @@ class _MainScreenState extends State<MainScreen> {
       }
     } else if (myChar == '%') {
       operatorClicks++;
+      moduloOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (sum != 0) {
+        if (theLastOperator == '*') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 * num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          theLastOperator = '';
+        } else if (sum != 0) {
           secondNumValue = '';
           number = '';
           sum = sum % num2;
@@ -125,6 +134,13 @@ class _MainScreenState extends State<MainScreen> {
           number = number + sum.toString();
           number = number + ' $myChar ';
           minusOperator = '';
+        } else if (moduloOperator == '%') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 % num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          moduloOperator = '';
         } else if (sum != 0) {
           secondNumValue = '';
           number = '';
@@ -176,6 +192,10 @@ class _MainScreenState extends State<MainScreen> {
     operatorClicks = 0;
     clicks = 0;
     doubleSum = 0;
+    minusOperator = '';
+    plusOperator = '';
+    theLastOperator = '';
+    moduloOperator = '';
   }
 
   void determineOperatorSign(String operator) {
