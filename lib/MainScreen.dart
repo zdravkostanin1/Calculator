@@ -10,28 +10,39 @@ class _MainScreenState extends State<MainScreen> {
 
   String number = '';
   String secondNumValue = '';
-  int saveNum1 = 0;
-  int saveNum2 = 0;
+  int num1 = 0;
+  int num2 = 0;
   double doubleSum = 0;
   int sum = 0;
   String myChar = '';
   int clicks = 0;
   int operatorClicks = 0;
+  String theLastOperator = '';
+  String plusOperator = '';
+  String divideOperator = '';
 
   void determineOperatorClicks() {
     if (myChar == '+') {
       operatorClicks++;
+      plusOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (sum != 0) {
+        if (theLastOperator == '*') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 * num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          theLastOperator = '';
+        } else if (sum != 0) {
           number = '';
           secondNumValue = '';
-          sum = sum + saveNum2;
+          sum = sum + num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
         } else {
           number = '';
           secondNumValue = '';
-          sum = saveNum1 + saveNum2;
+          sum = num1 + num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
         }
@@ -42,30 +53,40 @@ class _MainScreenState extends State<MainScreen> {
         if (sum != 0) {
           number = '';
           secondNumValue = '';
-          sum = sum - saveNum2;
+          sum = sum - num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
         } else {
           secondNumValue = '';
           number = '';
-          sum = saveNum1 - saveNum2;
+          sum = num1 - num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
         }
       }
     } else if (myChar == '/') {
-      operatorClicks += 1;
+      operatorClicks++;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (sum != 0) {
+        // if (theLastOperator == '*') {
+        //   secondNumValue = '';
+        //   number = '';
+        //   sum = num1 * num2;
+        //   number = number + sum.toString();
+        //   number = number + ' $myChar ';
+        //   theLastOperator = '';
+        //   // print(sum);
+        //   // print(doubleSum);
+        // }
+        if (sum != 0 || doubleSum != 0) {
           secondNumValue = '';
           number = '';
-          doubleSum = doubleSum / saveNum2;
+          doubleSum = doubleSum / num2;
           number = number + doubleSum.toString();
           number = number + ' $myChar ';
         } else {
           secondNumValue = '';
           number = '';
-          doubleSum = saveNum1 / saveNum2;
+          doubleSum = num1 / num2;
           number = number + doubleSum.toString();
           number = number + ' $myChar ';
         }
@@ -76,30 +97,38 @@ class _MainScreenState extends State<MainScreen> {
         if (sum != 0) {
           secondNumValue = '';
           number = '';
-          sum = sum % saveNum2;
+          sum = sum % num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
         } else {
           secondNumValue = '';
           number = '';
-          sum = saveNum1 % saveNum2;
+          sum = num1 % num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
         }
       }
     } else if (myChar == '*') {
       operatorClicks++;
+      theLastOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (sum != 0) {
+        if (plusOperator == '+') {
+          number = '';
+          secondNumValue = '';
+          sum = num1 + num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          plusOperator = '';
+        } else if (sum != 0) {
           secondNumValue = '';
           number = '';
-          sum = sum * saveNum2;
+          sum = sum * num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
         } else {
           secondNumValue = '';
           number = '';
-          sum = saveNum1 * saveNum2;
+          sum = num1 * num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
         }
@@ -115,17 +144,17 @@ class _MainScreenState extends State<MainScreen> {
             myChar == '/' ||
             myChar == '-' ||
             myChar == '%') {
-          saveNum2 = num;
+          num2 = num;
           // First convert to number, to represent into Text Widget
-          number += saveNum2.toString();
+          number += num2.toString();
           // save the value in a string, then to be able to parse it
-          secondNumValue += saveNum2.toString();
+          secondNumValue += num2.toString();
           // Then, on a click, we parse the value to an integer,
-          saveNum2 = int.parse(secondNumValue);
+          num2 = int.parse(secondNumValue);
         } else {
-          saveNum1 = num;
-          number += saveNum1.toString();
-          saveNum1 = int.parse(number);
+          num1 = num;
+          number += num1.toString();
+          num1 = int.parse(number);
         }
       }
     }
@@ -133,8 +162,8 @@ class _MainScreenState extends State<MainScreen> {
 
   void clearTheValuesOfVariables() {
     number = '';
-    saveNum1 = 0;
-    saveNum2 = 0;
+    num1 = 0;
+    num2 = 0;
     sum = 0;
     myChar = '';
     secondNumValue = '';
@@ -444,24 +473,23 @@ class _MainScreenState extends State<MainScreen> {
                         if (myChar == '+') {
                           setState(() {
                             if (sum != 0) {
-                              sum = sum + saveNum2;
+                              sum = sum + num2;
                               number = number + ' = ';
                               number = number + sum.toString();
                             } else if (sum == 0) {
-                              sum = saveNum1 + saveNum2;
+                              sum = num1 + num2;
                               number = number + ' = ';
                               number = number + sum.toString();
                             }
                           });
-                          // print(myChar);
                         } else if (myChar == '*') {
                           setState(() {
                             if (sum != 0) {
-                              sum = sum * saveNum2;
+                              sum = sum * num2;
                               number = number + ' = ';
                               number = number + sum.toString();
                             } else if (sum == 0) {
-                              sum = saveNum1 * saveNum2;
+                              sum = num1 * num2;
                               number = number + ' = ';
                               number = number + sum.toString();
                             }
@@ -469,11 +497,11 @@ class _MainScreenState extends State<MainScreen> {
                         } else if (myChar == '/') {
                           setState(() {
                             if (doubleSum != 0) {
-                              doubleSum = doubleSum / saveNum2;
+                              doubleSum = doubleSum / num2;
                               number = number + ' = ';
                               number = number + doubleSum.toString();
                             } else if (doubleSum == 0) {
-                              doubleSum = saveNum1 / saveNum2;
+                              doubleSum = num1 / num2;
                               number = number + ' = ';
                               number = number + doubleSum.toString();
                             }
@@ -481,11 +509,11 @@ class _MainScreenState extends State<MainScreen> {
                         } else if (myChar == '-') {
                           setState(() {
                             if (sum != 0) {
-                              sum = sum - saveNum2;
+                              sum = sum - num2;
                               number = number + ' = ';
                               number = number + sum.toString();
                             } else if (sum == 0) {
-                              sum = saveNum1 - saveNum2;
+                              sum = num1 - num2;
                               number = number + ' = ';
                               number = number + sum.toString();
                             }
@@ -493,11 +521,11 @@ class _MainScreenState extends State<MainScreen> {
                         } else if (myChar == '%') {
                           setState(() {
                             if (sum != 0) {
-                              sum = sum % saveNum2;
+                              sum = sum % num2;
                               number = number + ' = ';
                               number = number + sum.toString();
                             } else if (sum == 0) {
-                              sum = saveNum1 % saveNum2;
+                              sum = num1 % num2;
                               number = number + ' = ';
                               number = number + sum.toString();
                             }
