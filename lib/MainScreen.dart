@@ -67,17 +67,17 @@ class _MainScreenState extends State<MainScreen> {
     } else if (myChar == '/') {
       operatorClicks++;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        // if (theLastOperator == '*') {
-        //   secondNumValue = '';
-        //   number = '';
-        //   sum = num1 * num2;
-        //   number = number + sum.toString();
-        //   number = number + ' $myChar ';
-        //   theLastOperator = '';
-        //   // print(sum);
-        //   // print(doubleSum);
-        // }
-        if (sum != 0 || doubleSum != 0) {
+        if (theLastOperator == '*') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 * num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          theLastOperator = '';
+          print(sum);
+          print(doubleSum);
+        }
+        if (doubleSum != 0) {
           secondNumValue = '';
           number = '';
           doubleSum = doubleSum / num2;
