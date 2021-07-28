@@ -401,7 +401,7 @@ class _MainScreenState extends State<MainScreen> {
                         });
                       },
                       child: Text(
-                        '⌫',
+                        'C',
                         style: TextStyle(fontSize: 33.0, color: Colors.black),
                       ),
                     ),
