@@ -97,6 +97,14 @@ class _MainScreenState extends State<MainScreen> {
           number = number + sum.toString();
           number = number + ' $myChar ';
           moduloOperator = '';
+        } else if (divisionOperator == '/') {
+          secondNumValue = '';
+          number = '';
+          doubleSum = num1 / num2;
+          sum = doubleSum.toInt();
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          divisionOperator = '';
         } else if (sum != 0) {
           number = '';
           secondNumValue = '';
@@ -129,6 +137,13 @@ class _MainScreenState extends State<MainScreen> {
           number = number + sum.toString();
           number = number + ' $myChar ';
           plusOperator = '';
+        } else if (minusOperator == '-') {
+          number = '';
+          secondNumValue = '';
+          doubleSum = num1 - num2.toDouble();
+          number = number + doubleSum.toString();
+          number = number + ' $myChar ';
+          minusOperator = '';
         } else if (doubleSum != 0 || sum != 0) {
           if (sum != 0) {
             secondNumValue = '';
