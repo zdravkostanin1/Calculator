@@ -90,6 +90,13 @@ class _MainScreenState extends State<MainScreen> {
           number = number + sum.toString();
           number = number + ' $myChar ';
           plusOperator = '';
+        } else if (moduloOperator == '%') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 % num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          moduloOperator = '';
         } else if (sum != 0) {
           number = '';
           secondNumValue = '';
@@ -163,6 +170,13 @@ class _MainScreenState extends State<MainScreen> {
           number = number + sum.toString();
           number = number + ' $myChar ';
           plusOperator = '';
+        } else if (minusOperator == '-') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 - num2;
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          minusOperator = '';
         } else if (sum != 0) {
           secondNumValue = '';
           number = '';
