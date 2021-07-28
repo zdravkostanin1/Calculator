@@ -618,69 +618,79 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         if (myChar == '+') {
-                          setState(() {
-                            if (sum != 0) {
-                              sum = sum + num2;
-                              number = number + ' = ';
-                              number = number + sum.toString();
-                            } else if (sum == 0) {
-                              sum = num1 + num2;
-                              number = number + ' = ';
-                              number = number + sum.toString();
-                            }
-                          });
+                          if (num1 != 0 && num2 != 0) {
+                            setState(() {
+                              if (sum != 0) {
+                                sum = sum + num2;
+                                number = number + ' = ';
+                                number = number + sum.toString();
+                              } else if (sum == 0) {
+                                sum = num1 + num2;
+                                number = number + ' = ';
+                                number = number + sum.toString();
+                              }
+                            });
+                          }
                         } else if (myChar == '*') {
-                          setState(() {
-                            if (sum != 0) {
-                              sum = sum * num2;
-                              number = number + ' = ';
-                              number = number + sum.toString();
-                            } else if (doubleSum != 0) {
-                              doubleSum = doubleSum * num2;
-                              number = number + ' = ';
-                              number = number + doubleSum.toString();
-                            } else if (sum == 0) {
-                              sum = num1 * num2;
-                              number = number + ' = ';
-                              number = number + sum.toString();
-                            }
-                          });
+                          if (num1 != 0 && num2 != 0) {
+                            setState(() {
+                              if (sum != 0) {
+                                sum = sum * num2;
+                                number = number + ' = ';
+                                number = number + sum.toString();
+                              } else if (doubleSum != 0) {
+                                doubleSum = doubleSum * num2;
+                                number = number + ' = ';
+                                number = number + doubleSum.toString();
+                              } else if (sum == 0) {
+                                sum = num1 * num2;
+                                number = number + ' = ';
+                                number = number + sum.toString();
+                              }
+                            });
+                          }
                         } else if (myChar == '/') {
-                          setState(() {
-                            if (doubleSum != 0) {
-                              doubleSum = doubleSum / num2;
-                              number = number + ' = ';
-                              number = number + doubleSum.toString();
-                            } else if (doubleSum == 0) {
-                              doubleSum = num1 / num2;
-                              number = number + ' = ';
-                              number = number + doubleSum.toString();
-                            }
-                          });
+                          if (num1 != 0 && num2 != 0) {
+                            setState(() {
+                              if (doubleSum != 0) {
+                                doubleSum = doubleSum / num2;
+                                number = number + ' = ';
+                                number = number + doubleSum.toString();
+                              } else if (doubleSum == 0) {
+                                doubleSum = num1 / num2;
+                                number = number + ' = ';
+                                number = number + doubleSum.toString();
+                              }
+                            });
+                          }
                         } else if (myChar == '-') {
-                          setState(() {
-                            if (sum != 0) {
-                              sum = sum - num2;
-                              number = number + ' = ';
-                              number = number + sum.toString();
-                            } else if (sum == 0) {
-                              sum = num1 - num2;
-                              number = number + ' = ';
-                              number = number + sum.toString();
-                            }
-                          });
+                          if (num1 != 0 && num2 != 0) {
+                            setState(() {
+                              if (sum != 0) {
+                                sum = sum - num2;
+                                number = number + ' = ';
+                                number = number + sum.toString();
+                              } else if (sum == 0) {
+                                sum = num1 - num2;
+                                number = number + ' = ';
+                                number = number + sum.toString();
+                              }
+                            });
+                          }
                         } else if (myChar == '%') {
-                          setState(() {
-                            if (sum != 0) {
-                              sum = sum % num2;
-                              number = number + ' = ';
-                              number = number + sum.toString();
-                            } else if (sum == 0) {
-                              sum = num1 % num2;
-                              number = number + ' = ';
-                              number = number + sum.toString();
-                            }
-                          });
+                          if (num1 != 0 && num2 != 0) {
+                            setState(() {
+                              if (sum != 0) {
+                                sum = sum % num2;
+                                number = number + ' = ';
+                                number = number + sum.toString();
+                              } else if (sum == 0) {
+                                sum = num1 % num2;
+                                number = number + ' = ';
+                                number = number + sum.toString();
+                              }
+                            });
+                          }
                         }
                       },
                       child: Text(
