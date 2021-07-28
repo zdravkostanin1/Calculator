@@ -209,8 +209,6 @@ class _MainScreenState extends State<MainScreen> {
           number = number + doubleSum.toString();
           number = number + ' $myChar ';
           divisionOperator = '';
-          print(doubleSum);
-          print(sum);
         } else if (sum != 0 || doubleSum != 0) {
           if (doubleSum != 0) {
             secondNumValue = '';
