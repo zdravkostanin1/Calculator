@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   int clicks = 0;
   int operatorClicks = 0;
 
-  String theLastOperator = '';
+  String multiplyOperator = '';
   String plusOperator = '';
   String minusOperator = '';
   String moduloOperator = '';
@@ -29,13 +29,13 @@ class _MainScreenState extends State<MainScreen> {
       operatorClicks++;
       plusOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (theLastOperator == '*') {
+        if (multiplyOperator == '*') {
           secondNumValue = '';
           number = '';
           sum = num1 * num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
-          theLastOperator = '';
+          multiplyOperator = '';
         } else if (minusOperator == '-') {
           secondNumValue = '';
           number = '';
@@ -76,13 +76,13 @@ class _MainScreenState extends State<MainScreen> {
       operatorClicks++;
       minusOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (theLastOperator == '*') {
+        if (multiplyOperator == '*') {
           secondNumValue = '';
           number = '';
           sum = num1 * num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
-          theLastOperator = '';
+          multiplyOperator = '';
         } else if (plusOperator == '+') {
           number = '';
           secondNumValue = '';
@@ -123,13 +123,13 @@ class _MainScreenState extends State<MainScreen> {
       operatorClicks++;
       divisionOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (theLastOperator == '*') {
+        if (multiplyOperator == '*') {
           secondNumValue = '';
           number = '';
           doubleSum = num1 * num2.toDouble();
           number = number + doubleSum.toString();
           number = number + ' $myChar ';
-          theLastOperator = '';
+          multiplyOperator = '';
         } else if (plusOperator == '+') {
           number = '';
           secondNumValue = '';
@@ -144,6 +144,14 @@ class _MainScreenState extends State<MainScreen> {
           number = number + doubleSum.toString();
           number = number + ' $myChar ';
           minusOperator = '';
+        } else if (moduloOperator == '%') {
+          secondNumValue = '';
+          number = '';
+          sum = num1 % num2;
+          doubleSum = sum.toDouble();
+          number = number + doubleSum.toString();
+          number = number + ' $myChar ';
+          moduloOperator = '';
         } else if (doubleSum != 0 || sum != 0) {
           if (sum != 0) {
             secondNumValue = '';
@@ -171,13 +179,13 @@ class _MainScreenState extends State<MainScreen> {
       operatorClicks++;
       moduloOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
-        if (theLastOperator == '*') {
+        if (multiplyOperator == '*') {
           secondNumValue = '';
           number = '';
           sum = num1 * num2;
           number = number + sum.toString();
           number = number + ' $myChar ';
-          theLastOperator = '';
+          multiplyOperator = '';
         } else if (plusOperator == '+') {
           number = '';
           secondNumValue = '';
@@ -192,6 +200,13 @@ class _MainScreenState extends State<MainScreen> {
           number = number + sum.toString();
           number = number + ' $myChar ';
           minusOperator = '';
+        } else if (divisionOperator == '/') {
+          secondNumValue = '';
+          number = '';
+          doubleSum = num1 / num2;
+          number = number + doubleSum.toString();
+          number = number + ' $myChar ';
+          divisionOperator = '';
         } else if (sum != 0) {
           secondNumValue = '';
           number = '';
@@ -208,7 +223,7 @@ class _MainScreenState extends State<MainScreen> {
       }
     } else if (myChar == '*') {
       operatorClicks++;
-      theLastOperator = myChar;
+      multiplyOperator = myChar;
       if (operatorClicks == 2 || operatorClicks > 2) {
         if (plusOperator == '+') {
           number = '';
@@ -299,7 +314,7 @@ class _MainScreenState extends State<MainScreen> {
     doubleSum = 0;
     minusOperator = '';
     plusOperator = '';
-    theLastOperator = '';
+    multiplyOperator = '';
     moduloOperator = '';
     divisionOperator = '';
   }
