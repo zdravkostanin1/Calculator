@@ -8,16 +8,15 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final String appBarTitle = 'Calculator';
 
-  String number = '';
+  String numbersField = '';
   String secondNumValue = '';
   int num1 = 0;
   int num2 = 0;
   double doubleSum = 0;
   int sum = 0;
-  String myChar = '';
+  String selectedOperator = '';
   int clicks = 0;
   int operatorClicks = 0;
-
   String multiplyOperator = '';
   String plusOperator = '';
   String minusOperator = '';
@@ -25,254 +24,254 @@ class _MainScreenState extends State<MainScreen> {
   String divisionOperator = '';
 
   void determineOperatorClicks() {
-    if (myChar == '+') {
+    if (selectedOperator == '+') {
       operatorClicks++;
-      plusOperator = myChar;
+      plusOperator = selectedOperator;
       if (operatorClicks == 2 || operatorClicks > 2) {
         if (multiplyOperator == '*') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 * num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           multiplyOperator = '';
         } else if (minusOperator == '-') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 - num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           minusOperator = '';
         } else if (moduloOperator == '%') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 % num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           moduloOperator = '';
         } else if (divisionOperator == '/') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           doubleSum = num1 / num2;
           sum = doubleSum.toInt();
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           divisionOperator = '';
         } else if (sum != 0) {
-          number = '';
+          numbersField = '';
           secondNumValue = '';
           sum = sum + num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
         } else {
-          number = '';
+          numbersField = '';
           secondNumValue = '';
           sum = num1 + num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
         }
       }
-    } else if (myChar == '-') {
+    } else if (selectedOperator == '-') {
       operatorClicks++;
-      minusOperator = myChar;
+      minusOperator = selectedOperator;
       if (operatorClicks == 2 || operatorClicks > 2) {
         if (multiplyOperator == '*') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 * num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           multiplyOperator = '';
         } else if (plusOperator == '+') {
-          number = '';
+          numbersField = '';
           secondNumValue = '';
           sum = num1 + num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           plusOperator = '';
         } else if (moduloOperator == '%') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 % num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           moduloOperator = '';
         } else if (divisionOperator == '/') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           doubleSum = num1 / num2;
           sum = doubleSum.toInt();
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           divisionOperator = '';
         } else if (sum != 0) {
-          number = '';
+          numbersField = '';
           secondNumValue = '';
           sum = sum - num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
         } else {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 - num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
         }
       }
-    } else if (myChar == '/') {
+    } else if (selectedOperator == '/') {
       operatorClicks++;
-      divisionOperator = myChar;
+      divisionOperator = selectedOperator;
       if (operatorClicks == 2 || operatorClicks > 2) {
         if (multiplyOperator == '*') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           doubleSum = num1 * num2.toDouble();
-          number = number + doubleSum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + doubleSum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           multiplyOperator = '';
         } else if (plusOperator == '+') {
-          number = '';
+          numbersField = '';
           secondNumValue = '';
           sum = num1 + num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           plusOperator = '';
         } else if (minusOperator == '-') {
-          number = '';
+          numbersField = '';
           secondNumValue = '';
           doubleSum = num1 - num2.toDouble();
-          number = number + doubleSum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + doubleSum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           minusOperator = '';
         } else if (moduloOperator == '%') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 % num2;
           doubleSum = sum.toDouble();
-          number = number + doubleSum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + doubleSum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           moduloOperator = '';
         } else if (doubleSum != 0 || sum != 0) {
           if (sum != 0) {
             secondNumValue = '';
-            number = '';
+            numbersField = '';
             doubleSum = sum / num2;
             sum = doubleSum.toInt();
-            number = number + sum.toString();
-            number = number + ' $myChar ';
+            numbersField = numbersField + sum.toString();
+            numbersField = numbersField + ' $selectedOperator ';
           } else {
             secondNumValue = '';
-            number = '';
+            numbersField = '';
             doubleSum = doubleSum / num2;
-            number = number + doubleSum.toString();
-            number = number + ' $myChar ';
+            numbersField = numbersField + doubleSum.toString();
+            numbersField = numbersField + ' $selectedOperator ';
           }
         } else {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           doubleSum = num1 / num2;
-          number = number + doubleSum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + doubleSum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
         }
       }
-    } else if (myChar == '%') {
+    } else if (selectedOperator == '%') {
       operatorClicks++;
-      moduloOperator = myChar;
+      moduloOperator = selectedOperator;
       if (operatorClicks == 2 || operatorClicks > 2) {
         if (multiplyOperator == '*') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 * num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           multiplyOperator = '';
         } else if (plusOperator == '+') {
-          number = '';
+          numbersField = '';
           secondNumValue = '';
           sum = num1 + num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           plusOperator = '';
         } else if (minusOperator == '-') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 - num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           minusOperator = '';
         } else if (divisionOperator == '/') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           doubleSum = num1 / num2;
-          number = number + doubleSum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + doubleSum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           divisionOperator = '';
         } else if (sum != 0) {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = sum % num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
         } else {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 % num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
         }
       }
-    } else if (myChar == '*') {
+    } else if (selectedOperator == '*') {
       operatorClicks++;
-      multiplyOperator = myChar;
+      multiplyOperator = selectedOperator;
       if (operatorClicks == 2 || operatorClicks > 2) {
         if (plusOperator == '+') {
-          number = '';
+          numbersField = '';
           secondNumValue = '';
           sum = num1 + num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           plusOperator = '';
         } else if (minusOperator == '-') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 - num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           minusOperator = '';
         } else if (moduloOperator == '%') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 % num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           moduloOperator = '';
         } else if (divisionOperator == '/') {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           doubleSum = num1 / num2;
-          number = number + doubleSum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + doubleSum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
           divisionOperator = '';
         } else if (sum != 0 || doubleSum != 0) {
           if (doubleSum != 0) {
             secondNumValue = '';
-            number = '';
+            numbersField = '';
             doubleSum = doubleSum * num2;
-            number = number + doubleSum.toString();
-            number = number + ' $myChar ';
+            numbersField = numbersField + doubleSum.toString();
+            numbersField = numbersField + ' $selectedOperator ';
           } else {
             secondNumValue = '';
-            number = '';
+            numbersField = '';
             sum = sum * num2;
-            number = number + sum.toString();
-            number = number + ' $myChar ';
+            numbersField = numbersField + sum.toString();
+            numbersField = numbersField + ' $selectedOperator ';
           }
         } else {
           secondNumValue = '';
-          number = '';
+          numbersField = '';
           sum = num1 * num2;
-          number = number + sum.toString();
-          number = number + ' $myChar ';
+          numbersField = numbersField + sum.toString();
+          numbersField = numbersField + ' $selectedOperator ';
         }
       }
     }
@@ -281,33 +280,33 @@ class _MainScreenState extends State<MainScreen> {
   void determineNumberPlace(int num) {
     for (int i = 0; i <= clicks; i++) {
       if (i == 1) {
-        if (myChar == '+' ||
-            myChar == '*' ||
-            myChar == '/' ||
-            myChar == '-' ||
-            myChar == '%') {
+        if (selectedOperator == '+' ||
+            selectedOperator == '*' ||
+            selectedOperator == '/' ||
+            selectedOperator == '-' ||
+            selectedOperator == '%') {
           num2 = num;
           // First convert to number, to represent into Text Widget
-          number += num2.toString();
+          numbersField += num2.toString();
           // save the value in a string, then to be able to parse it
           secondNumValue += num2.toString();
           // Then, on a click, we parse the value to an integer,
           num2 = int.parse(secondNumValue);
         } else {
           num1 = num;
-          number += num1.toString();
-          num1 = int.parse(number);
+          numbersField += num1.toString();
+          num1 = int.parse(numbersField);
         }
       }
     }
   }
 
   void clearTheValuesOfVariables() {
-    number = '';
+    numbersField = '';
     num1 = 0;
     num2 = 0;
     sum = 0;
-    myChar = '';
+    selectedOperator = '';
     secondNumValue = '';
     operatorClicks = 0;
     clicks = 0;
@@ -320,8 +319,8 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void determineOperatorSign(String operator) {
-    myChar = operator;
-    number = number + ' $myChar ';
+    selectedOperator = operator;
+    numbersField = numbersField + ' $selectedOperator ';
   }
 
   @override
@@ -348,7 +347,7 @@ class _MainScreenState extends State<MainScreen> {
                     children: [
                       Expanded(
                         child: Text(
-                          number,
+                          numbersField,
                           style: TextStyle(
                             fontSize: 44.0,
                           ),
@@ -617,77 +616,80 @@ class _MainScreenState extends State<MainScreen> {
                   Expanded(
                     child: TextButton(
                       onPressed: () {
-                        if (myChar == '+') {
+                        if (selectedOperator == '+') {
                           if (num1 != 0 && num2 != 0) {
                             setState(() {
                               if (sum != 0) {
                                 sum = sum + num2;
-                                number = number + ' = ';
-                                number = number + sum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField = numbersField + sum.toString();
                               } else if (sum == 0) {
                                 sum = num1 + num2;
-                                number = number + ' = ';
-                                number = number + sum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField = numbersField + sum.toString();
                               }
                             });
                           }
-                        } else if (myChar == '*') {
+                        } else if (selectedOperator == '*') {
                           if (num1 != 0 && num2 != 0) {
                             setState(() {
                               if (sum != 0) {
                                 sum = sum * num2;
-                                number = number + ' = ';
-                                number = number + sum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField = numbersField + sum.toString();
                               } else if (doubleSum != 0) {
                                 doubleSum = doubleSum * num2;
-                                number = number + ' = ';
-                                number = number + doubleSum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField =
+                                    numbersField + doubleSum.toString();
                               } else if (sum == 0) {
                                 sum = num1 * num2;
-                                number = number + ' = ';
-                                number = number + sum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField = numbersField + sum.toString();
                               }
                             });
                           }
-                        } else if (myChar == '/') {
+                        } else if (selectedOperator == '/') {
                           if (num1 != 0 && num2 != 0) {
                             setState(() {
                               if (doubleSum != 0) {
                                 doubleSum = doubleSum / num2;
-                                number = number + ' = ';
-                                number = number + doubleSum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField =
+                                    numbersField + doubleSum.toString();
                               } else if (doubleSum == 0) {
                                 doubleSum = num1 / num2;
-                                number = number + ' = ';
-                                number = number + doubleSum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField =
+                                    numbersField + doubleSum.toString();
                               }
                             });
                           }
-                        } else if (myChar == '-') {
+                        } else if (selectedOperator == '-') {
                           if (num1 != 0 && num2 != 0) {
                             setState(() {
                               if (sum != 0) {
                                 sum = sum - num2;
-                                number = number + ' = ';
-                                number = number + sum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField = numbersField + sum.toString();
                               } else if (sum == 0) {
                                 sum = num1 - num2;
-                                number = number + ' = ';
-                                number = number + sum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField = numbersField + sum.toString();
                               }
                             });
                           }
-                        } else if (myChar == '%') {
+                        } else if (selectedOperator == '%') {
                           if (num1 != 0 && num2 != 0) {
                             setState(() {
                               if (sum != 0) {
                                 sum = sum % num2;
-                                number = number + ' = ';
-                                number = number + sum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField = numbersField + sum.toString();
                               } else if (sum == 0) {
                                 sum = num1 % num2;
-                                number = number + ' = ';
-                                number = number + sum.toString();
+                                numbersField = numbersField + ' = ';
+                                numbersField = numbersField + sum.toString();
                               }
                             });
                           }
