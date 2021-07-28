@@ -49,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
           numbersField = numbersField + sum.toString();
           numbersField = numbersField + ' $selectedOperator ';
           moduloOperator = '';
-        } else if (divisionOperator == '/') {
+        } else if (divisionOperator == '÷') {
           secondNumValue = '';
           numbersField = '';
           doubleSum = num1 / num2;
@@ -96,7 +96,7 @@ class _MainScreenState extends State<MainScreen> {
           numbersField = numbersField + sum.toString();
           numbersField = numbersField + ' $selectedOperator ';
           moduloOperator = '';
-        } else if (divisionOperator == '/') {
+        } else if (divisionOperator == '÷') {
           secondNumValue = '';
           numbersField = '';
           doubleSum = num1 / num2;
@@ -118,7 +118,7 @@ class _MainScreenState extends State<MainScreen> {
           numbersField = numbersField + ' $selectedOperator ';
         }
       }
-    } else if (selectedOperator == '/') {
+    } else if (selectedOperator == '÷') {
       operatorClicks++;
       divisionOperator = selectedOperator;
       if (operatorClicks == 2 || operatorClicks > 2) {
@@ -199,7 +199,7 @@ class _MainScreenState extends State<MainScreen> {
           numbersField = numbersField + sum.toString();
           numbersField = numbersField + ' $selectedOperator ';
           minusOperator = '';
-        } else if (divisionOperator == '/') {
+        } else if (divisionOperator == '÷') {
           secondNumValue = '';
           numbersField = '';
           doubleSum = num1 / num2;
@@ -245,7 +245,7 @@ class _MainScreenState extends State<MainScreen> {
           numbersField = numbersField + sum.toString();
           numbersField = numbersField + ' $selectedOperator ';
           moduloOperator = '';
-        } else if (divisionOperator == '/') {
+        } else if (divisionOperator == '÷') {
           secondNumValue = '';
           numbersField = '';
           doubleSum = num1 / num2;
@@ -282,7 +282,7 @@ class _MainScreenState extends State<MainScreen> {
       if (i == 1) {
         if (selectedOperator == '+' ||
             selectedOperator == '*' ||
-            selectedOperator == '/' ||
+            selectedOperator == '÷' ||
             selectedOperator == '-' ||
             selectedOperator == '%') {
           num2 = num;
@@ -429,12 +429,12 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          determineOperatorSign('/');
+                          determineOperatorSign('÷');
                           determineOperatorClicks();
                         });
                       },
                       child: Text(
-                        '/',
+                        '÷',
                         style: TextStyle(fontSize: 33.0, color: Colors.black),
                       ),
                     ),
@@ -649,7 +649,7 @@ class _MainScreenState extends State<MainScreen> {
                               }
                             });
                           }
-                        } else if (selectedOperator == '/') {
+                        } else if (selectedOperator == '÷') {
                           if (num1 != 0 && num2 != 0) {
                             setState(() {
                               if (doubleSum != 0) {
