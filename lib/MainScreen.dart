@@ -50,6 +50,14 @@ class _MainScreenState extends State<MainScreen> {
           number = number + sum.toString();
           number = number + ' $myChar ';
           moduloOperator = '';
+        } else if (divisionOperator == '/') {
+          secondNumValue = '';
+          number = '';
+          doubleSum = num1 / num2;
+          sum = doubleSum.toInt();
+          number = number + sum.toString();
+          number = number + ' $myChar ';
+          divisionOperator = '';
         } else if (sum != 0) {
           number = '';
           secondNumValue = '';
@@ -107,12 +115,28 @@ class _MainScreenState extends State<MainScreen> {
           number = number + doubleSum.toString();
           number = number + ' $myChar ';
           theLastOperator = '';
-        } else if (doubleSum != 0) {
-          secondNumValue = '';
+        } else if (plusOperator == '+') {
           number = '';
-          doubleSum = doubleSum / num2;
-          number = number + doubleSum.toString();
+          secondNumValue = '';
+          sum = num1 + num2;
+          number = number + sum.toString();
           number = number + ' $myChar ';
+          plusOperator = '';
+        } else if (doubleSum != 0 || sum != 0) {
+          if (sum != 0) {
+            secondNumValue = '';
+            number = '';
+            doubleSum = sum / num2;
+            sum = doubleSum.toInt();
+            number = number + sum.toString();
+            number = number + ' $myChar ';
+          } else {
+            secondNumValue = '';
+            number = '';
+            doubleSum = doubleSum / num2;
+            number = number + doubleSum.toString();
+            number = number + ' $myChar ';
+          }
         } else {
           secondNumValue = '';
           number = '';
