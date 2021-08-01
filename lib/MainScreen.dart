@@ -23,19 +23,19 @@ class _MainScreenState extends State<MainScreen> {
   String moduloOperator = '';
   String divisionOperator = '';
 
-  int test = 0;
-  int myInt;
-  double forGettingLastDigit = 0;
-  String testingString = '';
+  int representNumber1 = 0;
+  int convertedFromDoubleNumber;
+  double lastDigitOfNum = 0;
+  String numbersFieldNewValue = '';
   int eraseButtonClickCount = 0;
 
   void removeLastCharacter(int numbersToDelete) {
     if ((numbersField != null) && (numbersField.length > 0)) {
       secondNumValue =
           secondNumValue.substring(0, secondNumValue.length - numbersToDelete);
-      testingString =
+      numbersFieldNewValue =
           numbersField.substring(0, numbersField.length - numbersToDelete);
-      numbersField = testingString;
+      numbersField = numbersFieldNewValue;
       num2 = int.parse(secondNumValue);
     }
   }
@@ -43,16 +43,16 @@ class _MainScreenState extends State<MainScreen> {
   void eraseLeftDigit() {
     eraseButtonClickCount++;
     if (selectedOperator == '') {
-      if (myInt == 0) {
+      if (convertedFromDoubleNumber == 0) {
         numbersField = '';
-        myInt = 0;
+        convertedFromDoubleNumber = 0;
       } else {
-        test = num1;
-        test = num1 % 10;
-        forGettingLastDigit = num1 / 10;
-        myInt = forGettingLastDigit.toInt();
-        num1 = myInt;
-        numbersField = myInt.toString();
+        representNumber1 = num1;
+        representNumber1 = num1 % 10;
+        lastDigitOfNum = num1 / 10;
+        convertedFromDoubleNumber = lastDigitOfNum.toInt();
+        num1 = convertedFromDoubleNumber;
+        numbersField = convertedFromDoubleNumber.toString();
         eraseButtonClickCount = 0;
       }
     } else if (selectedOperator != '') {
@@ -354,11 +354,11 @@ class _MainScreenState extends State<MainScreen> {
     multiplyOperator = '';
     moduloOperator = '';
     divisionOperator = '';
-    testingString = '';
+    numbersFieldNewValue = '';
     eraseButtonClickCount = 0;
-    myInt = 0;
-    test = 0;
-    forGettingLastDigit = 0;
+    convertedFromDoubleNumber = 0;
+    representNumber1 = 0;
+    lastDigitOfNum = 0;
   }
 
   void determineOperatorSign(String operator) {
