@@ -23,6 +23,47 @@ class _MainScreenState extends State<MainScreen> {
   String moduloOperator = '';
   String divisionOperator = '';
 
+  int test = 0;
+  int myInt;
+  double myDouble = 0;
+  double forGettingLastDigit = 0;
+  int myInt2;
+  int test2 = 0;
+  String testingString = '';
+  int eraseButtonClickCount = 0;
+
+  void removeLastCharacter(int numbersToDelete) {
+    if ((numbersField != null) && (numbersField.length > 0)) {
+      secondNumValue =
+          secondNumValue.substring(0, secondNumValue.length - numbersToDelete);
+      testingString =
+          numbersField.substring(0, numbersField.length - numbersToDelete);
+      numbersField = testingString;
+      num2 = int.parse(secondNumValue);
+    }
+  }
+
+  void eraseLeftDigit() {
+    eraseButtonClickCount++;
+    if (selectedOperator == '') {
+      if (myInt == 0) {
+        numbersField = '';
+        myInt = 0;
+      } else {
+        test = num1;
+        test = num1 % 10;
+        forGettingLastDigit = num1 / 10;
+        myInt = forGettingLastDigit.toInt();
+        num1 = myInt;
+        numbersField = myInt.toString();
+        eraseButtonClickCount = 0;
+      }
+    } else if (selectedOperator != '') {
+      removeLastCharacter(eraseButtonClickCount);
+      eraseButtonClickCount = 0;
+    }
+  }
+
   void determineOperatorClicks() {
     if (selectedOperator == '+') {
       operatorClicks++;
@@ -396,6 +437,19 @@ class _MainScreenState extends State<MainScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
+                          eraseLeftDigit();
+                        });
+                      },
+                      child: Text(
+                        '⌫',
+                        style: TextStyle(fontSize: 33.0, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
                           clearTheValuesOfVariables();
                         });
                       },
@@ -425,6 +479,9 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    width: 50.0,
+                  ),
                   Expanded(
                     child: TextButton(
                       onPressed: () {
@@ -438,6 +495,9 @@ class _MainScreenState extends State<MainScreen> {
                         style: TextStyle(fontSize: 33.0, color: Colors.black),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: 50.0,
                   ),
                   Expanded(
                     child: TextButton(
@@ -475,6 +535,9 @@ class _MainScreenState extends State<MainScreen> {
                       },
                     ),
                   ),
+                  SizedBox(
+                    width: 50.0,
+                  ),
                   Expanded(
                     child: TextButton(
                       onPressed: () {
@@ -488,6 +551,9 @@ class _MainScreenState extends State<MainScreen> {
                         style: TextStyle(fontSize: 33.0, color: Colors.black),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: 50.0,
                   ),
                   Expanded(
                     child: TextButton(
@@ -523,6 +589,9 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    width: 50.0,
+                  ),
                   Expanded(
                     child: TextButton(
                       onPressed: () {
@@ -536,6 +605,9 @@ class _MainScreenState extends State<MainScreen> {
                         style: TextStyle(fontSize: 33.0, color: Colors.black),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: 50.0,
                   ),
                   Expanded(
                     child: TextButton(
