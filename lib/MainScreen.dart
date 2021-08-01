@@ -25,10 +25,7 @@ class _MainScreenState extends State<MainScreen> {
 
   int test = 0;
   int myInt;
-  double myDouble = 0;
   double forGettingLastDigit = 0;
-  int myInt2;
-  int test2 = 0;
   String testingString = '';
   int eraseButtonClickCount = 0;
 
@@ -357,6 +354,11 @@ class _MainScreenState extends State<MainScreen> {
     multiplyOperator = '';
     moduloOperator = '';
     divisionOperator = '';
+    testingString = '';
+    eraseButtonClickCount = 0;
+    myInt = 0;
+    test = 0;
+    forGettingLastDigit = 0;
   }
 
   void determineOperatorSign(String operator) {
