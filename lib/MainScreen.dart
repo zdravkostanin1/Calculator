@@ -22,7 +22,6 @@ class _MainScreenState extends State<MainScreen> {
   String minusOperator = '';
   String moduloOperator = '';
   String divisionOperator = '';
-
   int representNumber1 = 0;
   int convertedFromDoubleNumber;
   double lastDigitOfNum = 0;
@@ -205,11 +204,15 @@ class _MainScreenState extends State<MainScreen> {
             numbersField = numbersField + ' $selectedOperator ';
           }
         } else {
-          secondNumValue = '';
-          numbersField = '';
-          doubleSum = num1 / num2;
-          numbersField = numbersField + doubleSum.toString();
-          numbersField = numbersField + ' $selectedOperator ';
+          if (num2 == 0) {
+            print('Cannot do calculations with one number');
+          } else {
+            secondNumValue = '';
+            numbersField = '';
+            doubleSum = num1 / num2;
+            numbersField = numbersField + doubleSum.toString();
+            numbersField = numbersField + ' $selectedOperator ';
+          }
         }
       }
     } else if (selectedOperator == '%') {
@@ -251,11 +254,15 @@ class _MainScreenState extends State<MainScreen> {
           numbersField = numbersField + sum.toString();
           numbersField = numbersField + ' $selectedOperator ';
         } else {
-          secondNumValue = '';
-          numbersField = '';
-          sum = num1 % num2;
-          numbersField = numbersField + sum.toString();
-          numbersField = numbersField + ' $selectedOperator ';
+          if (num2 == 0) {
+            print('Cannot do calculations with one number');
+          } else {
+            secondNumValue = '';
+            numbersField = '';
+            sum = num1 % num2;
+            numbersField = numbersField + sum.toString();
+            numbersField = numbersField + ' $selectedOperator ';
+          }
         }
       }
     } else if (selectedOperator == '*') {
@@ -305,11 +312,15 @@ class _MainScreenState extends State<MainScreen> {
             numbersField = numbersField + ' $selectedOperator ';
           }
         } else {
-          secondNumValue = '';
-          numbersField = '';
-          sum = num1 * num2;
-          numbersField = numbersField + sum.toString();
-          numbersField = numbersField + ' $selectedOperator ';
+          if (num2 == 0) {
+            print('Cannot do calculations with one number');
+          } else {
+            secondNumValue = '';
+            numbersField = '';
+            sum = num1 * num2;
+            numbersField = numbersField + sum.toString();
+            numbersField = numbersField + ' $selectedOperator ';
+          }
         }
       }
     }
@@ -362,8 +373,12 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void determineOperatorSign(String operator) {
-    selectedOperator = operator;
-    numbersField = numbersField + ' $selectedOperator ';
+    if (selectedOperator == operator && num2 == 0) {
+      print('You\'ve already selected an operator');
+    } else {
+      selectedOperator = operator;
+      numbersField = numbersField + ' $selectedOperator ';
+    }
   }
 
   @override
